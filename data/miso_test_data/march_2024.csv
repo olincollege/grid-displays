@@ -1,4 +1,4 @@
-timestamp-utc,load (MW),coal,natural_gas,nuclear,wind,solar,other,imports,node_name,LMP,emissions_intensity,timestamp-est,date-utc,date-est
+timestamp-utc,load-mw,coal,natural_gas,nuclear,wind,solar,other,imports,node_name,LMP,emissions_intensity,timestamp-est,date-utc,date-est
 2024-03-01 05:00:00+00:00,69952,16242.0,21796.0,10677.0,22225.0,-1.0,120.0,0.0,EES.CALCAS1_CT,14.55,379.27,2024-03-01 00:00:00-05:00,2024-03-01,2024-03-01
 2024-03-01 05:05:00+00:00,70480,16177.0,21734.0,10688.0,22173.0,-1.0,109.0,0.0,EES.CALCAS1_CT,25.7,375.08,2024-03-01 00:05:00-05:00,2024-03-01,2024-03-01
 2024-03-01 05:10:00+00:00,70539,16116.0,21681.0,10684.0,22176.0,-1.0,105.0,0.0,EES.CALCAS1_CT,23.55,373.53,2024-03-01 00:10:00-05:00,2024-03-01,2024-03-01
