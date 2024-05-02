@@ -48,7 +48,7 @@ const LoadMWGraph = ({ data }) => {
             y: {
               title: {
                 display: true,
-                text: "Load MW",
+                text: "Load (MW)",
               },
             },
           },

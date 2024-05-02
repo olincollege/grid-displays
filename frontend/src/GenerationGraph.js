@@ -54,7 +54,7 @@ const GenerationGraph = ({ data, columns }) => {
             y: {
               title: {
                 display: true,
-                text: "Energy Source Generation Comparison",
+                text: "MW",
               },
             },
           },

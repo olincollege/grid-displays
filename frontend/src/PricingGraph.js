@@ -47,7 +47,7 @@ const PricingGraph = ({ data }) => {
             y: {
               title: {
                 display: true,
-                text: "LMP",
+                text: "LMP ($/MWh)",
               },
             },
           },

@@ -47,7 +47,7 @@ const EmissionsGraph = ({ data }) => {
             y: {
               title: {
                 display: true,
-                text: "Emissions Intensity",
+                text: "Emissions Intensity (kgCO2e/MWh)",
               },
             },
           },

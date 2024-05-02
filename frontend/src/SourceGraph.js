@@ -57,7 +57,7 @@ const SourceComparisonGraph = ({ data, columns }) => {
               stacked: true,
               title: {
                 display: true,
-                text: "Energy Source Generation Comparison",
+                text: "MW",
               },
             },
           },

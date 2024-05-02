@@ -77,7 +77,7 @@ function App() {
           <div onClick={() => handleTabClick("TimeSelection")}>
             Time Selection
           </div>
-          <div onClick={() => handleTabClick("LoadMW")}>Load MW</div>
+          <div onClick={() => handleTabClick("LoadMW")}>Load</div>
           <div onClick={() => handleTabClick("EmissionsIntensity")}>
             Emissions Intensity
           </div>
