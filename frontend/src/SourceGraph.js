@@ -40,7 +40,7 @@ const SourceComparisonGraph = ({ data, columns }) => {
             backgroundColor: getColor(index),
             borderColor: getColor(index),
             borderWidth: 1,
-            fill: true, // Set fill to true to make bars opaque
+            fill: true,
           })),
         },
         options: {
