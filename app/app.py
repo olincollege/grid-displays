@@ -1,12 +1,15 @@
 from flask import Flask, make_response, request
+from flask_cors import CORS  # Import CORS from flask_cors
 import pandas as pd
 
-
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all origins
+
 
 @app.route('/hello/', methods=['GET'])
 def welcome():
     return "Hello World!"
+
 
 @app.route('/data/', methods=['GET'])
 def print_data():
@@ -29,25 +32,29 @@ def print_data():
         bad_cols = True
 
     if (passed_start_date == None) != (passed_end_date == None):
-        response_msg = start_and_end_date_message + (bad_col_message if bad_cols else '')
+        response_msg = start_and_end_date_message + \
+            (bad_col_message if bad_cols else '')
         return make_response(response_msg, 400)
 
     try:
-        parsed_start_date = pd.to_datetime(passed_start_date, format='%Y-%m-%d').date()
+        parsed_start_date = pd.to_datetime(
+            passed_start_date, format='%Y-%m-%d').date()
     except:
         bad_start = True
     try:
-        parsed_end_date = pd.to_datetime(passed_end_date, format='%Y-%m-%d').date()
+        parsed_end_date = pd.to_datetime(
+            passed_end_date, format='%Y-%m-%d').date()
 
     except:
         bad_end = True
 
     if bad_start or bad_end or bad_cols:
-        response_msg = (bad_col_message if bad_cols else '') + (bad_start_message if bad_start else '') + (bad_end_message if bad_end else '')
+        response_msg = (bad_col_message if bad_cols else '') + (
+            bad_start_message if bad_start else '') + (bad_end_message if bad_end else '')
         return make_response(response_msg, 400)
 
-
-    miso_data['date-est-str'] = pd.to_datetime(miso_data['date-est'], format='%Y-%m-%d').dt.date
+    miso_data['date-est-str'] = pd.to_datetime(
+        miso_data['date-est'], format='%Y-%m-%d').dt.date
     miso_data = miso_data[miso_data['date-est-str'] <= parsed_end_date]
     miso_data = miso_data[miso_data['date-est-str'] >= parsed_start_date]
     miso_data.drop('date-est-str', axis=1)
@@ -55,10 +62,9 @@ def print_data():
     if passed_cols:
         miso_data = miso_data[passed_cols]
 
-    resp = make_response(miso_data.to_json())
-    resp.headers["Content-Disposition"] = "attachment; filename=miso_test.json"
-    resp.headers["Content-Type"] = "text/json"
-    return resp
+    # Return JSON response
+    return miso_data.to_json(orient='records')
+
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=105)
+    app.run(host='0.0.0.0', port=5000)
