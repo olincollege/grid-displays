@@ -1,8 +1,7 @@
-// LoadMWGraph.js
 import React, { useState, useEffect } from "react";
 import Chart from "chart.js/auto";
 
-const LoadMWGraph = ({ data }) => {
+const LoadGraph = ({ data }) => {
   const [dataPoints, setDataPoints] = useState([]);
   const [chartInstance, setChartInstance] = useState(null);
 
@@ -28,7 +27,7 @@ const LoadMWGraph = ({ data }) => {
         data: {
           datasets: [
             {
-              label: "Load MW",
+              label: "Load",
               data: dataPoints,
               borderColor: "blue",
               borderWidth: 1,
@@ -73,4 +72,4 @@ const LoadMWGraph = ({ data }) => {
   );
 };
 
-export default LoadMWGraph;
+export default LoadGraph;

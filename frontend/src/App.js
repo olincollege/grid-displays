@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import LoadMWGraph from "./LoadMWGraph";
+import LoadGraph from "./LoadGraph";
 import EmissionsGraph from "./EmissionsGraph";
 import GenerationGraph from "./GenerationGraph";
 import SourceComparisonGraph from "./SourceGraph";
@@ -77,7 +77,7 @@ function App() {
           <div onClick={() => handleTabClick("TimeSelection")}>
             Time Selection
           </div>
-          <div onClick={() => handleTabClick("LoadMW")}>Load</div>
+          <div onClick={() => handleTabClick("Load")}>Load</div>
           <div onClick={() => handleTabClick("EmissionsIntensity")}>
             Emissions Intensity
           </div>
@@ -106,7 +106,7 @@ function App() {
             </header>
           )}
 
-          {selectedTab === "LoadMW" && <LoadMWGraph data={data} />}
+          {selectedTab === "Load" && <LoadGraph data={data} />}
           {selectedTab === "EmissionsIntensity" && (
             <EmissionsGraph data={data} />
           )}
