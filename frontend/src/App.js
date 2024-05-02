@@ -5,24 +5,33 @@ import EmissionsGraph from "./EmissionsGraph";
 import GenerationGraph from "./GenerationGraph";
 import SourceComparisonGraph from "./SourceGraph";
 import PricingGraph from "./PricingGraph";
+import TimeSelection from "./TimeSelection";
 
 function App() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  const [selectedStartDate, setSelectedStartDate] = useState("2024-03-02");
-  const [selectedEndDate, setSelectedEndDate] = useState("2024-03-03");
+  const [selectedStartTime, setSelectedStartTime] =
+    useState("2024-03-02T16:05");
+  const [selectedEndTime, setSelectedEndTime] = useState("2024-03-02T18:05");
   const [selectedTab, setSelectedTab] = useState("TimeSelection");
 
   useEffect(() => {
     fetchData();
-  }, [selectedStartDate, selectedEndDate]);
+  }, [selectedStartTime, selectedEndTime]);
 
   const fetchData = async () => {
     try {
       const url = "http://127.0.0.1:5000/data/";
+      const formattedStartDate = selectedStartTime
+        .replace("T", "-")
+        .replace(":", "-");
+      const formattedEndDate = selectedEndTime
+        .replace("T", "-")
+        .replace(":", "-");
+
       const params = {
-        start_date: selectedStartDate,
-        end_date: selectedEndDate,
+        start_timestamp: formattedStartDate,
+        end_timestamp: formattedEndDate,
       };
 
       const queryString = Object.keys(params)
@@ -64,7 +73,7 @@ function App() {
     <div className="App">
       <div className="side-panel">
         <h2>Navigation</h2>
-        <div class="custom-list">
+        <div className="custom-list">
           <div onClick={() => handleTabClick("TimeSelection")}>
             Time Selection
           </div>
@@ -86,22 +95,14 @@ function App() {
           {selectedTab === "TimeSelection" && (
             <header className="App-header">
               <h1>Grid Statistics Display</h1>
-              <div>
-                <label>Start Date:</label>
-                <input
-                  type="date"
-                  value={selectedStartDate}
-                  onChange={(e) => setSelectedStartDate(e.target.value)}
-                />
-              </div>
-              <div>
-                <label>End Date:</label>
-                <input
-                  type="date"
-                  value={selectedEndDate}
-                  onChange={(e) => setSelectedEndDate(e.target.value)}
-                />
-              </div>
+              <TimeSelection
+                selectedStartTime={selectedStartTime}
+                selectedEndTime={selectedEndTime}
+                handleStartTimeChange={(e) =>
+                  setSelectedStartTime(e.target.value)
+                }
+                handleEndTimeChange={(e) => setSelectedEndTime(e.target.value)}
+              />
             </header>
           )}
 

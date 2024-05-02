@@ -37,6 +37,7 @@ const SourceComparisonGraph = ({ data, columns }) => {
           datasets: columns.map((col, index) => ({
             label: col,
             data: dataPoints[col],
+            backgroundColor: getColor(index),
             borderColor: getColor(index),
             borderWidth: 1,
             fill: false,
@@ -75,12 +76,12 @@ const SourceComparisonGraph = ({ data, columns }) => {
 
   const getColor = (index) => {
     const colors = [
-      "red", // Coal
-      "blue", // Natural Gas
-      "green", // Nuclear
-      "orange", // Wind
-      "purple", // Solar
-      "brown", // Other
+      "rgba(255, 99, 132, 0.6)", // Red
+      "rgba(54, 162, 235, 0.6)", // Blue
+      "rgba(75, 192, 192, 0.6)", // Green
+      "rgba(255, 206, 86, 0.6)", // Yellow
+      "rgba(153, 102, 255, 0.6)", // Purple
+      "rgba(255, 159, 64, 0.6)", // Orange
     ];
     return colors[index % colors.length];
   };
