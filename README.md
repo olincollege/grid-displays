@@ -80,3 +80,8 @@ Runs the app in the development mode. Open
 
 The page will reload when you make changes. You may also see any lint errors in
 the console.
+
+
+## Contributors
+
+This project was created by Hanuman Vakil and Shreenithi Madan for the WebDev final project
